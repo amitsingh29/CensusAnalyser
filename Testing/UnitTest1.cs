@@ -1,5 +1,5 @@
-using CensusAnalyser;
 using NUnit.Framework;
+using CensusAnalyser;
 
 namespace Testing
 {
@@ -10,13 +10,12 @@ namespace Testing
         {
         }
 
-        /*[Test]
+        [Test]
         public void GivenTheStatesCensusCSVFile_CheckToEnsureTheNumberOfRecordMatches()
         {
             StateCensusAnalyser censusAnalyser = new StateCensusAnalyser();
             string value = censusAnalyser.ReadData();
             Assert.AreEqual(value, "30");
-            */
         }
     }
 }
