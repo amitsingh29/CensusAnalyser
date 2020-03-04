@@ -6,8 +6,7 @@ namespace CensusAnalyser
     {
         static void Main(string[] args)
         {
-            StateCensusAnalyser censusAnalyser = new StateCensusAnalyser();
-            censusAnalyser.readData();
+          
         }
     }
 }

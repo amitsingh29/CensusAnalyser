@@ -8,7 +8,7 @@ namespace CensusAnalyser
 {
     public class StateCensusAnalyser
     {
-        public void readData()
+        public string ReadData()
         {
             StreamReader sr = new StreamReader(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
             sr.BaseStream.Seek(0, SeekOrigin.Begin);
@@ -20,8 +20,8 @@ namespace CensusAnalyser
                 numberOfRecords++;
             }
             Console.WriteLine("Number of records are: "+ numberOfRecords);
-            Console.ReadLine();
-            sr.Close();
+            return numberOfRecords.ToString();
+
         }
     }
 }

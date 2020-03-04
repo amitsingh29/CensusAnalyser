@@ -1,3 +1,4 @@
+using CensusAnalyser;
 using NUnit.Framework;
 
 namespace Testing
@@ -9,10 +10,13 @@ namespace Testing
         {
         }
 
-        [Test]
-        public void HappyTestCase()
+        /*[Test]
+        public void GivenTheStatesCensusCSVFile_CheckToEnsureTheNumberOfRecordMatches()
         {
-           
+            StateCensusAnalyser censusAnalyser = new StateCensusAnalyser();
+            string value = censusAnalyser.ReadData();
+            Assert.AreEqual(value, "30");
+            */
         }
     }
 }
