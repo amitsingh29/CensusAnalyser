@@ -1,0 +1,11 @@
+C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\bin\Debug\netcoreapp3.1\CensusAnalyser.exe
+C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\bin\Debug\netcoreapp3.1\CensusAnalyser.deps.json
+C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\bin\Debug\netcoreapp3.1\CensusAnalyser.runtimeconfig.json
+C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\bin\Debug\netcoreapp3.1\CensusAnalyser.runtimeconfig.dev.json
+C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\bin\Debug\netcoreapp3.1\CensusAnalyser.dll
+C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\bin\Debug\netcoreapp3.1\CensusAnalyser.pdb
+C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\obj\Debug\netcoreapp3.1\CensusAnalyser.csprojAssemblyReference.cache
+C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\obj\Debug\netcoreapp3.1\CensusAnalyser.AssemblyInfoInputs.cache
+C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\obj\Debug\netcoreapp3.1\CensusAnalyser.AssemblyInfo.cs
+C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\obj\Debug\netcoreapp3.1\CensusAnalyser.dll
+C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\obj\Debug\netcoreapp3.1\CensusAnalyser.pdb

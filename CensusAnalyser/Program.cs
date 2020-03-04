@@ -6,9 +6,8 @@ namespace CensusAnalyser
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("****************************************");
-            Console.WriteLine("    Welcome to Census Analyser          ");
-            Console.WriteLine("****************************************");
+            StateCensusAnalyser censusAnalyser = new StateCensusAnalyser();
+            censusAnalyser.readData();
         }
     }
 }

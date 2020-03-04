@@ -10,9 +10,9 @@ namespace Testing
         }
 
         [Test]
-        public void Test1()
+        public void HappyTestCase()
         {
-            Assert.Pass();
+           
         }
     }
 }
