@@ -10,7 +10,8 @@ namespace CensusAnalyser
         public int ReadData()
         {
             int numberOfRecords = 0;
-            IEnumerable<string> AllLines = File.ReadLines(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv", Encoding.Default);
+            IEnumerable<string> AllLines = File.ReadLines(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
+
             foreach(var lines in AllLines)
             {
                 numberOfRecords++;
