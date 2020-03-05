@@ -7,17 +7,25 @@ namespace CensusAnalyser
     {
         public string ReadData()
         {
-            StreamReader sr = new StreamReader(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
-            sr.BaseStream.Seek(0, SeekOrigin.Begin);
-            string str = sr.ReadLine();
-            int numberOfRecords = 0;
-            while (str != null)
+            try
             {
-                str = sr.ReadLine();
-                numberOfRecords++;
+                StreamReader sr = new StreamReader(@"C:\Users\ye10397\Desktop\Amit\StateCensusAnalyser.csv");
+                sr.BaseStream.Seek(0, SeekOrigin.Begin);
+                string str = sr.ReadLine();
+                int numberOfRecords = 0;
+                while (str != null)
+                {
+                    str = sr.ReadLine();
+                    numberOfRecords++;
+                }
+                Console.WriteLine("Number of records are: " + numberOfRecords);
+                return numberOfRecords.ToString();
             }
-            Console.WriteLine("Number of records are: "+ numberOfRecords);
-            return numberOfRecords.ToString();
+            catch (Exception exception)
+            {
+
+                return exception.Message;
+            }
 
         }
     }
