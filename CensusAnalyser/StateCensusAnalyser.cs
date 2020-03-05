@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CensusAnalyser
 {
@@ -7,26 +9,15 @@ namespace CensusAnalyser
     {
         public string ReadData()
         {
-            try
+            int numberOfRecords = 0;
+            string filePath = @"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv";
+            List<string> lines = File.ReadAllLines(filePath).ToList();
+            foreach (string line in lines)
             {
-                StreamReader sr = new StreamReader(@"C:\Users\ye10397\Desktop\Amit\StateCensusAnalyser.csv");
-                sr.BaseStream.Seek(0, SeekOrigin.Begin);
-                string str = sr.ReadLine();
-                int numberOfRecords = 0;
-                while (str != null)
-                {
-                    str = sr.ReadLine();
-                    numberOfRecords++;
-                }
-                Console.WriteLine("Number of records are: " + numberOfRecords);
-                return numberOfRecords.ToString();
+                numberOfRecords++;
             }
-            catch (Exception exception)
-            {
-
-                return exception.Message;
-            }
-
+            Console.WriteLine("No of lines are: "+ numberOfRecords);
+            return numberOfRecords.ToString();
         }
     }
 }

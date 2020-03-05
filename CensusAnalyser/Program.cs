@@ -6,7 +6,7 @@ namespace CensusAnalyser
     {
         static void Main(string[] args)
         {
-          
+            
         }
     }
 }
