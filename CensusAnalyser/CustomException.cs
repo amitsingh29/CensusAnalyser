@@ -17,7 +17,8 @@ namespace CensusAnalyser
 
         public enum Exception_Type
         {
-            FileNotFoundException
+            FileNotFoundException,
+            IncorrectTypeException
         }
 
         public string GetMessage

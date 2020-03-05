@@ -9,8 +9,8 @@ namespace Testing
         public void GivenTheStatesCensusCSVFile_CheckToEnsureTheNumberOfRecordMatches()
         {
             StateCensusAnalyser stateCensus = new StateCensusAnalyser();
-            int value = stateCensus.ReadData(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
-            Assert.AreEqual(value, 30 );
+            string value = stateCensus.ReadData(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
+            Assert.AreEqual(value, "30" );
         }
 
         [Test]
@@ -21,7 +21,15 @@ namespace Testing
             Assert.AreEqual("file not found", value.GetMessage);
         }
 
+        [Test]
+        public void GivenTheStateCensusCSVFile_IfCorrectButTypeIncorrect_ReturnsACustomException()
+        {
+            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
+            var value = Assert.Throws<CustomException>(()=> stateCensusAnalyser.ReadData(@"C:\Users\ye10397\Desktop\Amit\StateCensus.jpg"));
+            Assert.AreEqual("IncorrectTypeException", value.GetMessage);
+        }
 
-        
+
+
     }
 }
