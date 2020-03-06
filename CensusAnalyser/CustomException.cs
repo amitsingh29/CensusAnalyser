@@ -18,10 +18,11 @@ namespace CensusAnalyser
         public enum Exception_Type
         {
             FileNotFoundException,
-            IncorrectTypeException
+            IncorrectTypeException,
+            IncorrectDelimiterException
         }
 
-        public string GetMessage
+        public override string Message
         {
             get
             {

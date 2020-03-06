@@ -8,28 +8,33 @@ namespace Testing
         [Test]
         public void GivenTheStatesCensusCSVFile_CheckToEnsureTheNumberOfRecordMatches()
         {
-            StateCensusAnalyser stateCensus = new StateCensusAnalyser();
-            string value = stateCensus.ReadData(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
+            StateCensusAnalyser stateCensus = new StateCensusAnalyser(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
+            string value = stateCensus.ReadData();
             Assert.AreEqual(value, "30" );
         }
 
         [Test]
         public void GivenTheStateCensusCSVFile_IfIncorrect_ReturnsACustomException()
         {
-            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
-            var value = Assert.Throws<CustomException>(()=>stateCensusAnalyser.ReadData(@"C:\Users\ye10397\Desktop\Amit\StateCensus.csv"));
-            Assert.AreEqual("file not found", value.GetMessage);
+            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser(@"C:\Users\ye10397\Desktop\Amit\StateCensus.csv");
+            CustomException value = Assert.Throws<CustomException>(() => stateCensusAnalyser.ReadData());
+            Assert.AreEqual("file not found", value.Message);
         }
 
         [Test]
         public void GivenTheStateCensusCSVFile_IfCorrectButTypeIncorrect_ReturnsACustomException()
         {
-            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
-            var value = Assert.Throws<CustomException>(()=> stateCensusAnalyser.ReadData(@"C:\Users\ye10397\Desktop\Amit\StateCensus.jpg"));
-            Assert.AreEqual("IncorrectTypeException", value.GetMessage);
+            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.jpg");
+            string value = stateCensusAnalyser.ReadData();
+            Assert.AreEqual("IncorrectTypeException", value);
         }
 
-
-
+        [Test]
+        public void GivenTheStateCensusCSVFile_WhenCorrectButDelimiterIncorrect_ReturnsACustomException()
+        {
+            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv", '.');
+            string value = stateCensusAnalyser.ReadData();
+            Assert.AreEqual("IncorrectDelimiterException", value);
+        }
     }
 }
