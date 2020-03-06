@@ -36,5 +36,13 @@ namespace Testing
             string value = stateCensusAnalyser.ReadData();
             Assert.AreEqual("IncorrectDelimiterException", value);
         }
+
+        [Test]
+        public void GivenTheStateCensusCSVFile_WhenCorrectButCSVHeaderIncorrect_ReturnsACustomException()
+        {
+            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv", "lhs");
+            string value = stateCensusAnalyser.ReadData();
+            Assert.AreEqual("IncorrectHeaderException", value);
+        }
     }
 }

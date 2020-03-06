@@ -9,7 +9,7 @@ namespace CensusAnalyser
     {
         private string filePath;
         private char delimiter = ',';
-
+        private string header = "State,Population,AreaInSqKm,DensityPerSqKm";
         public StateCensusAnalyser()
         {
         }
@@ -25,6 +25,13 @@ namespace CensusAnalyser
             this.delimiter = delimiter;
         }
 
+        public StateCensusAnalyser(string filePath, string header)
+        {
+            this.filePath = filePath;
+            this.header = header;
+        }
+
+
         public string ReadData()
         {
             try
@@ -34,7 +41,7 @@ namespace CensusAnalyser
                     throw new CustomException(CustomException.Exception_Type.IncorrectTypeException, "IncorrectTypeException");
                 }
                 string[] lines = File.ReadAllLines(filePath);
-
+               
                 foreach (string line in lines)
                 {
                     if (!line.Contains(delimiter))
@@ -43,6 +50,11 @@ namespace CensusAnalyser
                     }
                 }
 
+                    if (lines[0] != header)
+                    {
+                        throw new CustomException(CustomException.Exception_Type.IncorrectHeaderException, "IncorrectHeaderException");
+                    }
+                
                 return lines.Length.ToString();
             }
 

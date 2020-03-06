@@ -19,7 +19,8 @@ namespace CensusAnalyser
         {
             FileNotFoundException,
             IncorrectTypeException,
-            IncorrectDelimiterException
+            IncorrectDelimiterException,
+            IncorrectHeaderException
         }
 
         public override string Message
