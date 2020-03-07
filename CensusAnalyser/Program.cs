@@ -6,8 +6,9 @@ namespace CensusAnalyser
     {
         static void Main(string[] args)
         {
-            /*StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
-            stateCensusAnalyser.ReadData();*/
+            CSVStateCensus cSVStateCensus = new CSVStateCensus(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
+            string data = cSVStateCensus.ReadData();
+            Console.WriteLine(data);
         }
     }
 }
