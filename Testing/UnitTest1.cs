@@ -74,13 +74,8 @@ namespace Testing
             Assert.AreEqual("IncorrectHeaderException", value);
         }
 
-
-
-
-
-
         /// <summary>
-        /// Given the state code CSV file when analyze number of record matches.
+        /// Given the state code CSV file when analyze number of record matches using delegate.
         /// </summary>
         [Test]
         public void GivenTheStatesCodeCSVFile_CheckToEnsureTheNumberOfRecordMatches()
@@ -94,7 +89,7 @@ namespace Testing
         }
 
         /// <summary>
-        ///  Given the state code CSV file incorrect when analyze returns custom exception.
+        ///  Given the state code CSV file incorrect when analyze returns custom exception using delegate.
         /// </summary>
         [Test]
         public void GivenTheStateCodeCSVFile_IfIncorrect_ReturnsACustomException()
@@ -105,7 +100,7 @@ namespace Testing
         }
 
         /// <summary>
-        /// Given the state code CSV file correct type incorrect when analyze returns custom exception.
+        /// Given the state code CSV file correct type incorrect when analyze returns custom exception using delegate.
         /// </summary>
         [Test]
         public void GivenTheStateCodeCSVFile_IfCorrectButTypeIncorrect_ReturnsACustomException()
@@ -117,7 +112,7 @@ namespace Testing
         }
 
         /// <summary>
-        ///  Given the state code CSV file correct delimiter incorrect when analyze returns custom exception.
+        ///  Given the state code CSV file correct delimiter incorrect when analyze returns custom exception using delegate.
         /// </summary>
         [Test]
         public void GivenTheStateCodeCSVFile_WhenCorrectButDelimiterIncorrect_ReturnsACustomException()
@@ -129,7 +124,7 @@ namespace Testing
         }
 
         /// <summary>
-        /// Given the state code CSV file correct CSV header incorrect when analyze returns custom exception.
+        /// Given the state code CSV file correct CSV header incorrect when analyze returns custom exception using delegate.
         /// </summary>
         [Test]
         public void GivenTheStateCodeCSVFile_WhenCorrectButCSVHeaderIncorrect_ReturnsACustomException()
