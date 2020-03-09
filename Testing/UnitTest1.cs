@@ -1,10 +1,24 @@
-using CensusAnalyser;
-using NUnit.Framework;
+//-----------------------------------------------------------------------
+// <copyright file="Tests.cs" company="BridgeLabz">
+//     Copyright © 2020
+// </copyright>
+// <creator name="Amit Singh"/>
+//-----------------------------------------------------------------------
 
 namespace Testing
 {
+    using CensusAnalyser;
+    using NUnit.Framework;
+
+    /// <summary>
+    /// Tests class
+    /// </summary>
     public class Tests
     {
+
+        /// <summary>
+        /// Given the state census CSV file when analyze number of record matches.
+        /// </summary>
         [Test]
         public void GivenTheStatesCensusCSVFile_CheckToEnsureTheNumberOfRecordMatches()
         {
@@ -15,6 +29,9 @@ namespace Testing
             Assert.AreEqual(value, value1);
         }
 
+        /// <summary>
+        /// Given the state census CSV file incorrect when analyze returns custom exception.
+        /// </summary>
         [Test]
         public void GivenTheStateCensusCSVFile_IfIncorrect_ReturnsACustomException()
         {
@@ -23,6 +40,9 @@ namespace Testing
             Assert.AreEqual("file not found", value.Message);
         }
 
+        /// <summary>
+        /// Given the state census CSV file correct type incorrect when analyze returns custom exception.
+        /// </summary>
         [Test]
         public void GivenTheStateCensusCSVFile_IfCorrectButTypeIncorrect_ReturnsACustomException()
         {
@@ -31,6 +51,9 @@ namespace Testing
             Assert.AreEqual("IncorrectTypeException", value);
         }
 
+        /// <summary>
+        /// Given the state census CSV file correct delimiter incorrect when analyze returns custom exception.
+        /// </summary>
         [Test]
         public void GivenTheStateCensusCSVFile_WhenCorrectButDelimiterIncorrect_ReturnsACustomException()
         {
@@ -39,6 +62,9 @@ namespace Testing
             Assert.AreEqual("IncorrectDelimiterException", value);
         }
 
+        /// <summary>
+        /// Given the state census CSV file correct CSV header incorrect when analyze returns custom exception.
+        /// </summary>
         [Test]
         public void GivenTheStateCensusCSVFile_WhenCorrectButCSVHeaderIncorrect_ReturnsACustomException()
         {
