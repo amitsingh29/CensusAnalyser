@@ -9,6 +9,7 @@ namespace Testing
 {
     using CensusAnalyser;
     using NUnit.Framework;
+    using static CensusAnalyser.CSVStates;
 
     /// <summary>
     /// Tests class
@@ -73,6 +74,11 @@ namespace Testing
             Assert.AreEqual("IncorrectHeaderException", value);
         }
 
+
+
+
+
+
         /// <summary>
         /// Given the state code CSV file when analyze number of record matches.
         /// </summary>
@@ -80,10 +86,11 @@ namespace Testing
         public void GivenTheStatesCodeCSVFile_CheckToEnsureTheNumberOfRecordMatches()
         {
             StateCensusAnalyser stateCensus = new StateCensusAnalyser(@"C:\Users\ye10397\Desktop\Amit\StateCode.csv");
-            CSVStates states = new CSVStates(@"C:\Users\ye10397\Desktop\Amit\StateCode.csv");
-            string value1 = states.GetData();
+            CSVStates census = new CSVStates(@"C:\Users\ye10397\Desktop\Amit\StateCode.csv");
+            data delegate_obj = new data(census.GetData);
             string value = stateCensus.ReadFileData();
-            Assert.AreEqual(value, value1);
+            string actual = delegate_obj();
+            Assert.AreEqual(value, actual);
         }
 
         /// <summary>
@@ -104,8 +111,9 @@ namespace Testing
         public void GivenTheStateCodeCSVFile_IfCorrectButTypeIncorrect_ReturnsACustomException()
         {
             CSVStates state = new CSVStates(@"C:\Users\ye10397\Desktop\Amit\StateCode.jpg");
-            string value = state.GetData();
-            Assert.AreEqual("IncorrectTypeException", value);
+            data delegate_obj = new data(state.GetData);
+            string actual = delegate_obj();
+            Assert.AreEqual("IncorrectTypeException", actual);
         }
 
         /// <summary>
@@ -115,8 +123,9 @@ namespace Testing
         public void GivenTheStateCodeCSVFile_WhenCorrectButDelimiterIncorrect_ReturnsACustomException()
         {
             CSVStates state = new CSVStates(@"C:\Users\ye10397\Desktop\Amit\StateCode.csv", '.');
-            string value = state.GetData();
-            Assert.AreEqual("IncorrectDelimiterException", value);
+            data delegate_obj = new data(state.GetData);
+            string actual = delegate_obj();
+            Assert.AreEqual("IncorrectDelimiterException", actual);
         }
 
         /// <summary>
@@ -126,8 +135,10 @@ namespace Testing
         public void GivenTheStateCodeCSVFile_WhenCorrectButCSVHeaderIncorrect_ReturnsACustomException()
         {
             CSVStates state = new CSVStates(@"C:\Users\ye10397\Desktop\Amit\StateCode.csv", "rhs");
-            string value = state.GetData();
-            Assert.AreEqual("IncorrectHeaderException", value);
+            data delegate_obj = new data(state.GetData);
+            string actual = delegate_obj();
+            Assert.AreEqual("IncorrectHeaderException", actual);
         }
+        
     }
 }

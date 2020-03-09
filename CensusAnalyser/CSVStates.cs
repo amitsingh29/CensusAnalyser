@@ -9,7 +9,8 @@ namespace CensusAnalyser
     {
         private char delimiter = ',';
         private string path;
-        string header = "State,Population,AreaInSqKm,DensityPerSqKm";
+        string header = "SrNo,State,Name,TIN,StateCode,";
+        public delegate string data();
         public CSVStates()
         {
         }
@@ -42,7 +43,7 @@ namespace CensusAnalyser
                 }
                 string[] str = File.ReadAllLines(path);
                 IEnumerable<string> getLines = str;
-
+                Console.WriteLine(str[0]);
                 foreach (string line in getLines)
                 {
                     if (!line.Contains(delimiter))
