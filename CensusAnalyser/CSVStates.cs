@@ -7,16 +7,72 @@ namespace CensusAnalyser
 {
     public class CSVStates
     {
-        int numberOfLines = 0;
-        public int getData(string path)
+        private char delimiter = ',';
+        private string path;
+        string header = "State,Population,AreaInSqKm,DensityPerSqKm";
+        public CSVStates()
         {
-            string[] str = File.ReadAllLines(path);
-            IEnumerable<string> getLines = str;
-            foreach(var lines in getLines)
+        }
+
+        public CSVStates(string path)
+        {
+            this.path = path;
+        }
+        int numberOfRecords = 0;
+
+        public CSVStates(string path, char delimiter)
+        {
+            this.path = path;
+            this.delimiter = delimiter;
+        }
+
+        public CSVStates(string path, string header)
+        {
+            this.path = path;
+            this.header = header;
+        }
+
+        public string GetData()
+        {
+            try
             {
-                numberOfLines++;
+                if (Path.GetExtension(path) != ".csv")
+                {
+                    throw new CustomException(CustomException.Exception_Type.IncorrectTypeException, "IncorrectTypeException");
+                }
+                string[] str = File.ReadAllLines(path);
+                IEnumerable<string> getLines = str;
+
+                foreach (string line in getLines)
+                {
+                    if (!line.Contains(delimiter))
+                    {
+                        throw new CustomException(CustomException.Exception_Type.IncorrectDelimiterException, "IncorrectDelimiterException");
+                    }
+                }
+
+                if (str[0] != header)
+                {
+                    throw new CustomException(CustomException.Exception_Type.IncorrectHeaderException, "IncorrectHeaderException");
+                }
+
+                foreach (var lines in getLines)
+                {
+                    numberOfRecords++;
+                }
+                Console.WriteLine("Number of records are: " + numberOfRecords);
+                return numberOfRecords.ToString();
             }
-            return numberOfLines;
+
+            catch (FileNotFoundException)
+            {
+                throw new CustomException(CustomException.Exception_Type.FileNotFoundException, "file not found");
+            }
+
+            catch (CustomException ex)
+            {
+                return ex.Message;
+            }
         }
     }
 }

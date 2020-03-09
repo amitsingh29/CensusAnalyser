@@ -72,5 +72,62 @@ namespace Testing
             string value = stateCensus.ReadData();
             Assert.AreEqual("IncorrectHeaderException", value);
         }
+
+        /// <summary>
+        /// Given the state code CSV file when analyze number of record matches.
+        /// </summary>
+        [Test]
+        public void GivenTheStatesCodeCSVFile_CheckToEnsureTheNumberOfRecordMatches()
+        {
+            StateCensusAnalyser stateCensus = new StateCensusAnalyser(@"C:\Users\ye10397\Desktop\Amit\StateCode.csv");
+            CSVStates states = new CSVStates(@"C:\Users\ye10397\Desktop\Amit\StateCode.csv");
+            string value1 = states.GetData();
+            string value = stateCensus.ReadFileData();
+            Assert.AreEqual(value, value1);
+        }
+
+        /// <summary>
+        ///  Given the state code CSV file incorrect when analyze returns custom exception.
+        /// </summary>
+        [Test]
+        public void GivenTheStateCodeCSVFile_IfIncorrect_ReturnsACustomException()
+        {
+            CSVStates state = new CSVStates(@"C:\Users\ye10397\Desktop\Amit\StateCensus.csv");
+            CustomException value = Assert.Throws<CustomException>(() => state.GetData());
+            Assert.AreEqual("file not found", value.Message);
+        }
+
+        /// <summary>
+        /// Given the state code CSV file correct type incorrect when analyze returns custom exception.
+        /// </summary>
+        [Test]
+        public void GivenTheStateCodeCSVFile_IfCorrectButTypeIncorrect_ReturnsACustomException()
+        {
+            CSVStates state = new CSVStates(@"C:\Users\ye10397\Desktop\Amit\StateCode.jpg");
+            string value = state.GetData();
+            Assert.AreEqual("IncorrectTypeException", value);
+        }
+
+        /// <summary>
+        ///  Given the state code CSV file correct delimiter incorrect when analyze returns custom exception.
+        /// </summary>
+        [Test]
+        public void GivenTheStateCodeCSVFile_WhenCorrectButDelimiterIncorrect_ReturnsACustomException()
+        {
+            CSVStates state = new CSVStates(@"C:\Users\ye10397\Desktop\Amit\StateCode.csv", '.');
+            string value = state.GetData();
+            Assert.AreEqual("IncorrectDelimiterException", value);
+        }
+
+        /// <summary>
+        /// Given the state code CSV file correct CSV header incorrect when analyze returns custom exception.
+        /// </summary>
+        [Test]
+        public void GivenTheStateCodeCSVFile_WhenCorrectButCSVHeaderIncorrect_ReturnsACustomException()
+        {
+            CSVStates state = new CSVStates(@"C:\Users\ye10397\Desktop\Amit\StateCode.csv", "rhs");
+            string value = state.GetData();
+            Assert.AreEqual("IncorrectHeaderException", value);
+        }
     }
 }
