@@ -46,7 +46,7 @@ namespace Testing
         [Test]
         public void GivenTheStateCensusCSVFile_IfCorrectButTypeIncorrect_ReturnsACustomException()
         {
-            CSVStateCensus stateCensus = new CSVStateCensus();
+            CSVStateCensus stateCensus = new CSVStateCensus(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.jpg");
             string value = stateCensus.ReadData();
             Assert.AreEqual("IncorrectTypeException", value);
         }
