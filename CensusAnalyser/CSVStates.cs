@@ -18,7 +18,7 @@ namespace CensusAnalyser
     public class CSVStates
     {
         /// <summary>
-        /// The delimeter
+        /// The delimiter
         /// </summary>
         private char delimiter = ',';
 
@@ -33,24 +33,28 @@ namespace CensusAnalyser
         private string header = "SrNo,State,Name,TIN,StateCode,";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
+        /// count the numberOfRecords 
+        /// </summary>
+        private int numberOfRecords = 0;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CSVStates"/> class.
         /// </summary>
         public CSVStates()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
+        /// Initializes a new instance of the <see cref="CSVStates"/> class.
         /// </summary>
         /// <param name="path">The path</param>
         public CSVStates(string path)
         {
             this.path = path;
         }
-        int numberOfRecords = 0;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
+        /// Initializes a new instance of the <see cref="CSVStates"/> class.
         /// </summary>
         /// <param name="path">The path</param>
         /// <param name="delimiter">The delimiter</param>
@@ -61,7 +65,7 @@ namespace CensusAnalyser
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
+        /// Initializes a new instance of the <see cref="CSVStates"/> class.
         /// </summary>
         /// <param name="path">The path</param>
         /// <param name="header">The header</param>
@@ -72,15 +76,15 @@ namespace CensusAnalyser
         }
 
         /// <summary>
-        /// string non-parametrised delegate
+        /// delegate named Data
         /// </summary>
-        /// <returns></returns>
+        /// <returns>reference of GetData()</returns>
         public delegate string Data();
 
         /// <summary>
         /// Number Of Records
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns the number of lines</returns>
         public string GetData()
         {
             try
@@ -90,7 +94,7 @@ namespace CensusAnalyser
                     throw new CustomException(CustomException.Exception_Type.IncorrectTypeException, "IncorrectTypeException");
                 }
 
-                string[] str = File.ReadAllLines(path);
+                string[] str = File.ReadAllLines(this.path);
                 IEnumerable<string> getLines = str;
                 Console.WriteLine(str[0]);
                 foreach (string line in getLines)
@@ -112,7 +116,7 @@ namespace CensusAnalyser
                 }
 
                 Console.WriteLine("Number of records are: " + this.numberOfRecords);
-                return numberOfRecords.ToString();
+                return this.numberOfRecords.ToString();
             }
             catch (FileNotFoundException)
             {
