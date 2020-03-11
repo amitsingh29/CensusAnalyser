@@ -15,104 +15,47 @@ namespace CensusAnalyser
     /// <summary>
     /// CSVStates class
     /// </summary>
-    public class CSVStates
+    public class CSVStates : ICSVBuilder
     {
-        /// <summary>
-        /// The delimiter
-        /// </summary>
-        private char delimiter = ',';
-
-        /// <summary>
-        /// The path
-        /// </summary>
-        private string path;
-
-        /// <summary>
-        /// The header
-        /// </summary>
-        private string header = "SrNo,State,Name,TIN,StateCode,";
-
-        /// <summary>
-        /// count the numberOfRecords 
-        /// </summary>
-        private int numberOfRecords = 0;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStates"/> class.
-        /// </summary>
-        public CSVStates()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStates"/> class.
-        /// </summary>
-        /// <param name="path">The path</param>
-        public CSVStates(string path)
-        {
-            this.path = path;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStates"/> class.
-        /// </summary>
-        /// <param name="path">The path</param>
-        /// <param name="delimiter">The delimiter</param>
-        public CSVStates(string path, char delimiter)
-        {
-            this.path = path;
-            this.delimiter = delimiter;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStates"/> class.
-        /// </summary>
-        /// <param name="path">The path</param>
-        /// <param name="header">The header</param>
-        public CSVStates(string path, string header)
-        {
-            this.path = path;
-            this.header = header;
-        }
-
+        int numberOfRecords = 0;
         /// <summary>
         /// delegate named Data
         /// </summary>
         /// <returns>reference of GetData()</returns>
-        public delegate string Data();
+        public delegate string Data(string path, char delimiter = ',', string header = "");
 
         /// <summary>
         /// Number Of Records
         /// </summary>
         /// <returns>Returns the number of lines</returns>
-        public string GetData()
+        public string GetData(string path ,char delimiter=',', string header="")
         {
             try
             {
-                if (Path.GetExtension(this.path) != ".csv")
+                if (Path.GetExtension(path) != ".csv")
                 {
                     throw new CustomException(CustomException.Exception_Type.IncorrectTypeException, "IncorrectTypeException");
                 }
 
-                string[] str = File.ReadAllLines(this.path);
+                string[] str = File.ReadAllLines(path);
                 IEnumerable<string> getLines = str;
-                Console.WriteLine(str[0]);
+                //Console.WriteLine(str[0]);
                 foreach (string line in getLines)
                 {
-                    if (!line.Contains(this.delimiter))
+                    if (!line.Contains(delimiter))
                     {
                         throw new CustomException(CustomException.Exception_Type.IncorrectDelimiterException, "IncorrectDelimiterException");
                     }
                 }
 
-                if (str[0] != this.header)
+                if (str[0] != header)
                 {
                     throw new CustomException(CustomException.Exception_Type.IncorrectHeaderException, "IncorrectHeaderException");
                 }
 
                 foreach (var lines in getLines)
                 {
-                    this.numberOfRecords++;
+                    numberOfRecords++;
                 }
 
                 Console.WriteLine("Number of records are: " + this.numberOfRecords);

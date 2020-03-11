@@ -15,8 +15,8 @@ namespace CensusAnalyser
     /// <summary>
     /// CSVStateCensus class
     /// </summary>
-    public class CSVStateCensus
-    {
+    public class CSVStateCensus : ICSVBuilder
+    {/*
         /// <summary>
         /// The Path
         /// </summary>
@@ -30,56 +30,20 @@ namespace CensusAnalyser
         /// <summary>
         /// The Header
         /// </summary>
-        private string header = "State,Population,AreaInSqKm,DensityPerSqKm";
+        private string header = "State,Population,AreaInSqKm,DensityPerSqKm";*/
 
         /// <summary>
         /// Count the numberOfRecords
         /// </summary>
         int numberOfRecords = 0;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
-        /// </summary>
-        public CSVStateCensus()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
-        /// </summary>
-        /// <param name="filePath"></param>
-        public CSVStateCensus(string filePath)
-        {
-            this.filePath = filePath;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
-        /// </summary>
-        /// <param name="filePath">The path</param>
-        /// <param name="delimiter">The delimiter</param>
-        public CSVStateCensus(string filePath, char delimiter)
-        {
-            this.filePath = filePath;
-            this.delimiter = delimiter;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CSVStateCensus"/> class.
-        /// </summary>
-        /// <param name="filePath">The path</param>
-        /// <param name="header">The header</param>
-        public CSVStateCensus(string filePath, string header)
-        {
-            this.filePath = filePath;
-            this.header = header;
-        }
+        public delegate string Datas(string filePath, char delimiter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm");
 
         /// <summary>
         /// Number Of Records
         /// </summary>
         /// <returns>Returns the number of lines</returns>
-        public string ReadData()
+        public string GetData(string filePath, char delimiter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm")
         {
             try
             {
