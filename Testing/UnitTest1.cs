@@ -19,42 +19,42 @@ namespace Testing
         /// <summary>
         /// StateCensusData file path
         /// </summary>
-        string path = @"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv";
+        private string path = @"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv";
 
         /// <summary>
         /// StateCensusData file wrong path
         /// </summary>
-        string wrongPath = @"C:\Users\ye10397\Desktop\Amit\StateCensusDat.csv";
+        private string wrongPath = @"C:\Users\ye10397\Desktop\Amit\StateCensusDat.csv";
 
         /// <summary>
         /// StateCensusData file wrongtype
         /// </summary>
-        string wrongType = @"C:\Users\ye10397\Desktop\Amit\StateCensusData.jpg";
+        private string wrongType = @"C:\Users\ye10397\Desktop\Amit\StateCensusData.jpg";
 
         /// <summary>
         /// Statecode file path
         /// </summary>
-        string filePath = @"C:\Users\ye10397\Desktop\Amit\StateCode.csv";
+        private string filePath = @"C:\Users\ye10397\Desktop\Amit\StateCode.csv";
 
         /// <summary>
         /// Statecode file wrong path
         /// </summary>
-        string wrongPath1 = @"C:\Users\ye10397\Desktop\Amit\StateCodes.csv";
+        private string wrongPath1 = @"C:\Users\ye10397\Desktop\Amit\StateCodes.csv";
 
         /// <summary>
         /// Statecode file wrong type
         /// </summary>
-        string wrongType1 = @"C:\Users\ye10397\Desktop\Amit\StateCode.jpg";
+        private string wrongType1 = @"C:\Users\ye10397\Desktop\Amit\StateCode.jpg";
 
         /// <summary>
         /// StateCensusData file header
         /// </summary>
-        string header = "State,Population,AreaInSqKm,DensityPerSqKm";
+        private string header = "State,Population,AreaInSqKm,DensityPerSqKm";
 
         /// <summary>
         /// Statecode file header
         /// </summary>
-        string header1 = "SrNo,State,Name,TIN,StateCode,";
+        private string header1 = "SrNo,State,Name,TIN,StateCode,";
 
         /// <summary>
         /// Given the state census CSV file when analyze number of record matches.
@@ -63,10 +63,10 @@ namespace Testing
         [Test]
         public void GivenTheStatesCensusCSVFile_CheckToEnsureTheNumberOfRecordMatches()
         {
-            StateCensusAnalyser stateCensus = new StateCensusAnalyser(path);
+            StateCensusAnalyser stateCensus = new StateCensusAnalyser(this.path);
             string value = stateCensus.ReadFileData();
             CSVStateCensus census = new CSVStateCensus();
-            string value1 = census.GetData(path);
+            string value1 = census.GetData(this.path);
             Assert.AreEqual(value, value1);
         }
 
@@ -78,7 +78,7 @@ namespace Testing
         public void GivenTheStateCensusCSVFile_IfIncorrect_ReturnsACustomException()
         {
             CSVStateCensus stateCensus = new CSVStateCensus();
-            CustomException value = Assert.Throws<CustomException>(() => stateCensus.GetData(wrongPath));
+            CustomException value = Assert.Throws<CustomException>(() => stateCensus.GetData(this.wrongPath));
             Assert.AreEqual("file not found", value.Message);
         }
 
@@ -90,7 +90,7 @@ namespace Testing
         public void GivenTheStateCensusCSVFile_IfCorrectButTypeIncorrect_ReturnsACustomException()
         {
             CSVStateCensus stateCensus = new CSVStateCensus();
-            string value = stateCensus.GetData(wrongType);
+            string value = stateCensus.GetData(this.wrongType);
             Assert.AreEqual("IncorrectTypeException", value);
         }
 
@@ -102,7 +102,7 @@ namespace Testing
         public void GivenTheStateCensusCSVFile_WhenCorrectButDelimiterIncorrect_ReturnsACustomException()
         {
             CSVStateCensus stateCensus = new CSVStateCensus();
-            string value = stateCensus.GetData(path, '.');
+            string value = stateCensus.GetData(this.path, '.');
             Assert.AreEqual("IncorrectDelimiterException", value);
         }
 
@@ -114,7 +114,7 @@ namespace Testing
         public void GivenTheStateCensusCSVFile_WhenCorrectButCSVHeaderIncorrect_ReturnsACustomException()
         {
             CSVStateCensus stateCensus = new CSVStateCensus();
-            string value = stateCensus.GetData(path, ',', "lhs");
+            string value = stateCensus.GetData(this.path, ',', "lhs");
             Assert.AreEqual("IncorrectHeaderException", value);
         }
 
@@ -125,10 +125,10 @@ namespace Testing
         [Test]
         public void GivenTheStatesCodeCSVFile_CheckToEnsureTheNumberOfRecordMatches()
         {
-            StateCensusAnalyser stateCensus = new StateCensusAnalyser(filePath);
+            StateCensusAnalyser stateCensus = new StateCensusAnalyser(this.filePath);
             CSVStates census = new CSVStates();
             Data delegate_obj = new Data(census.GetData);
-            string value = delegate_obj(filePath, ',', header1);
+            string value = delegate_obj(this.filePath, ',', this.header1);
             string actual = stateCensus.ReadFileData();
             Assert.AreEqual(value, actual);
         }
@@ -141,7 +141,7 @@ namespace Testing
         public void GivenTheStateCodeCSVFile_IfIncorrect_ReturnsACustomException()
         {
             CSVStates state = new CSVStates();
-            CustomException value = Assert.Throws<CustomException>(() => state.GetData(wrongPath1));
+            CustomException value = Assert.Throws<CustomException>(() => state.GetData(this.wrongPath1));
             Assert.AreEqual("file not found", value.Message);
         }
 
@@ -154,7 +154,7 @@ namespace Testing
         {
             CSVStates state = new CSVStates();
             Data delegate_obj = new Data(state.GetData);
-            string actual = delegate_obj(wrongType1);
+            string actual = delegate_obj(this.wrongType1);
             Assert.AreEqual("IncorrectTypeException", actual);
         }
 
@@ -167,7 +167,7 @@ namespace Testing
         {
             CSVStates state = new CSVStates();
             Data delegate_obj = new Data(state.GetData);
-            string actual = delegate_obj(filePath, '.');
+            string actual = delegate_obj(this.filePath, '.');
             Assert.AreEqual("IncorrectDelimiterException", actual);
         }
 
@@ -180,7 +180,7 @@ namespace Testing
         {
             CSVStates state = new CSVStates();
             Data delegate_obj = new Data(state.GetData);
-            string actual = delegate_obj(filePath, ',', "wrong header");
+            string actual = delegate_obj(this.filePath, ',', "wrong header");
             Assert.AreEqual("IncorrectHeaderException", actual);
         }   
     }

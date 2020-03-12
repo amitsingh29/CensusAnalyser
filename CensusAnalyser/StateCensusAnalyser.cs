@@ -8,8 +8,8 @@
 namespace CensusAnalyser
 {
     using System;
-    using System.IO;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
 
     /// <summary>
@@ -44,7 +44,7 @@ namespace CensusAnalyser
         /// <returns>The Number Of Lines</returns>
         public string ReadFileData()
         {
-            string[] lines = File.ReadAllLines(filePath);
+            string[] lines = File.ReadAllLines(this.filePath);
             return lines.Length.ToString();
         }
     }

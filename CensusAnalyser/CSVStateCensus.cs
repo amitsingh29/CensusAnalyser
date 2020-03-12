@@ -9,40 +9,35 @@ namespace CensusAnalyser
 {
     using System;
     using System.Collections.Generic;
-    using System.Text;
     using System.IO;
+    using System.Text;
 
     /// <summary>
     /// CSVStateCensus class
     /// </summary>
     public class CSVStateCensus : ICSVBuilder
-    {/*
+    {
         /// <summary>
-        /// The Path
+        /// Count the number of records
         /// </summary>
-        private string filePath;
+        private int numberOfRecords = 0;
 
         /// <summary>
-        /// The Delimiter
+        /// Act as reference to Datas method
         /// </summary>
-        private char delimiter = ',';
-
-        /// <summary>
-        /// The Header
-        /// </summary>
-        private string header = "State,Population,AreaInSqKm,DensityPerSqKm";*/
-
-        /// <summary>
-        /// Count the numberOfRecords
-        /// </summary>
-        int numberOfRecords = 0;
-
+        /// <param name="filePath">The filePath</param>
+        /// <param name="delimiter">The delimiter</param>
+        /// <param name="header">The header</param>
+        /// <returns>string filePath, char delimiter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm"</returns>
         public delegate string Datas(string filePath, char delimiter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm");
 
         /// <summary>
-        /// Number Of Records
+        /// Returns the records
         /// </summary>
-        /// <returns>Returns the number of lines</returns>
+        /// <param name="filePath">The filePath</param>
+        /// <param name="delimiter">The delimiter</param>
+        /// <param name="header">The header</param>
+        /// <returns>string filePath, char delimiter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm"</returns>
         public string GetData(string filePath, char delimiter = ',', string header = "State,Population,AreaInSqKm,DensityPerSqKm")
         {
             try
@@ -51,10 +46,11 @@ namespace CensusAnalyser
                 {
                     throw new CustomException(CustomException.Exception_Type.IncorrectTypeException, "IncorrectTypeException");
                 }
-                string [] str = File.ReadAllLines(filePath);
-                IEnumerable<string> AllLines = str;
 
-                foreach (string line in AllLines)
+                string[] str = File.ReadAllLines(filePath);
+                IEnumerable<string> allLines = str;
+
+                foreach (string line in allLines)
                 {
                     if (!line.Contains(delimiter))
                     {
@@ -62,24 +58,23 @@ namespace CensusAnalyser
                     }
                 }
 
-                if ( str[0]!= header)
+                if (str[0] != header)
                 {
                     throw new CustomException(CustomException.Exception_Type.IncorrectHeaderException, "IncorrectHeaderException");
                 }
 
-                foreach (var lines in AllLines)
+                foreach (var lines in allLines)
                 {
-                    numberOfRecords++;
+                    this.numberOfRecords++;
                 }
-                Console.WriteLine("Number of records are: " + numberOfRecords);
-                return numberOfRecords.ToString();
-            }
 
+                Console.WriteLine("Number of records are: " + this.numberOfRecords);
+                return this.numberOfRecords.ToString();
+            }
             catch (FileNotFoundException)
             {
                 throw new CustomException(CustomException.Exception_Type.FileNotFoundException, "file not found");
             }
-
             catch (CustomException ex)
             {
                 return ex.Message;
