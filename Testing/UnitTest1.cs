@@ -16,13 +16,44 @@ namespace Testing
     /// </summary>
     public class Tests
     {
+        /// <summary>
+        /// StateCensusData file path
+        /// </summary>
         string path = @"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv";
+
+        /// <summary>
+        /// StateCensusData file wrong path
+        /// </summary>
         string wrongPath = @"C:\Users\ye10397\Desktop\Amit\StateCensusDat.csv";
+
+        /// <summary>
+        /// StateCensusData file wrongtype
+        /// </summary>
         string wrongType = @"C:\Users\ye10397\Desktop\Amit\StateCensusData.jpg";
+
+        /// <summary>
+        /// Statecode file path
+        /// </summary>
         string filePath = @"C:\Users\ye10397\Desktop\Amit\StateCode.csv";
+
+        /// <summary>
+        /// Statecode file wrong path
+        /// </summary>
         string wrongPath1 = @"C:\Users\ye10397\Desktop\Amit\StateCodes.csv";
+
+        /// <summary>
+        /// Statecode file wrong type
+        /// </summary>
         string wrongType1 = @"C:\Users\ye10397\Desktop\Amit\StateCode.jpg";
+
+        /// <summary>
+        /// StateCensusData file header
+        /// </summary>
         string header = "State,Population,AreaInSqKm,DensityPerSqKm";
+
+        /// <summary>
+        /// Statecode file header
+        /// </summary>
         string header1 = "SrNo,State,Name,TIN,StateCode,";
 
         /// <summary>
