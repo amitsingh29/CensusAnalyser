@@ -17,18 +17,22 @@ namespace CensusAnalyser
     /// </summary>
     public class CSVStates : ICSVBuilder
     {
-        int numberOfRecords = 0;
+        /// <summary>
+        /// To count the number of records
+        /// </summary>
+        private int numberOfRecords = 0;
+
         /// <summary>
         /// delegate named Data
         /// </summary>
-        /// <returns>reference of GetData()</returns>
+        /// <returns>String path, char delimiter,string header</returns>
         public delegate string Data(string path, char delimiter = ',', string header = "");
 
         /// <summary>
         /// Number Of Records
         /// </summary>
-        /// <returns>Returns the number of lines</returns>
-        public string GetData(string path ,char delimiter=',', string header="")
+        /// <returns>String path, char delimiter = ',',string header = ""</returns>
+        public string GetData(string path, char delimiter = ',', string header = "")
         {
             try
             {
@@ -39,7 +43,7 @@ namespace CensusAnalyser
 
                 string[] str = File.ReadAllLines(path);
                 IEnumerable<string> getLines = str;
-                //Console.WriteLine(str[0]);
+
                 foreach (string line in getLines)
                 {
                     if (!line.Contains(delimiter))
@@ -55,7 +59,7 @@ namespace CensusAnalyser
 
                 foreach (var lines in getLines)
                 {
-                    numberOfRecords++;
+                    this.numberOfRecords++;
                 }
 
                 Console.WriteLine("Number of records are: " + this.numberOfRecords);
