@@ -6,9 +6,17 @@ namespace CensusAnalyser
 {
     public class CSVFactory 
     {
-       /* public override ICSVBuilder GetData(char delimiter, string path, string header)
+        public static ICSVBuilder Factory(string className)
         {
-
-        }*/
+            switch(className)
+            {
+                case "CSVStates":
+                    return new CSVStates();
+                case "CSVStateCensus":
+                    return new CSVStateCensus();
+            }
+            return null;
+        }
     }
 }
+

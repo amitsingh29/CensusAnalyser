@@ -4,8 +4,8 @@ using System.Text;
 
 namespace CensusAnalyser
 {
-    interface ICSVBuilder
+    public interface ICSVBuilder
     {
-        string GetData(string path, char delimiter = ',', string header = "shhtrytgh");
+        string GetData();
     }
 }
