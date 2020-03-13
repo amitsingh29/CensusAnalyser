@@ -50,7 +50,7 @@ namespace CensusAnalyser
         /// <param name="_path">_path</param>
         /// <param name="_delimiter">_path</param>
         /// <param name="_header">_path</param>
-        public CSVBuilder(string _path, char _delimiter, string _header)
+        public CSVBuilder(string _path, char _delimiter=',', string _header="")
         {
             path = _path;
             delimiter = _delimiter;

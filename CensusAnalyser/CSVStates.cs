@@ -19,7 +19,7 @@ namespace CensusAnalyser
     {
         public int count = 0;
         public CSVBuilder cSVBuilder = new CSVBuilder();
-        public delegate string ReadData();
+        public delegate string ReadData1();
       
         public string GetData()
         {
