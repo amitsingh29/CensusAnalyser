@@ -106,7 +106,7 @@ namespace Testing
         {
             char delimiter = '.';
             CSVStateCensus obj = (CSVStateCensus)CSVFactory.Factory("CSVStateCensus");
-            CSVBuilder cSVBuilder = new CSVBuilder(path, delimiter, header);
+            CSVBuilder cSVBuilder = new CSVBuilder(this.path, delimiter, this.header);
             ReadData read = new ReadData(obj.GetData);
             string expected = "IncorrectDelimiterException";
             string actual = read();
@@ -125,7 +125,6 @@ namespace Testing
             string expected = "IncorrectHeaderException";
             string actual = read();
             Assert.AreEqual(expected, actual);
-
         }
 
         /// <summary>

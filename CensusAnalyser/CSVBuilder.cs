@@ -85,7 +85,7 @@ namespace CensusAnalyser
         {
             get
             {
-                return this.Record;
+                return record;
             }
         }
 
@@ -109,7 +109,7 @@ namespace CensusAnalyser
 
                     throw;
                 }
-                return this.Header;
+                return header;
             }
         }
         
@@ -129,7 +129,7 @@ namespace CensusAnalyser
                             throw new CustomException(CustomException.Exception_Type.IncorrectDelimiterException, "IncorrectDelimiterException");
                         }
                     }
-                    return this.Delimiter;
+                    return delimiter;
                 }
                 catch (Exception)
                 {
