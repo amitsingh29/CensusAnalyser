@@ -9,6 +9,7 @@ namespace Testing
 {
     using CensusAnalyser;
     using NUnit.Framework;
+    using NUnit.Framework.Internal;
     using static CensusAnalyser.CSVStateCensus;
     using static CensusAnalyser.CSVStates;
 
@@ -57,10 +58,10 @@ namespace Testing
         /// </summary>
         private string header1 = "SrNo,State,Name,TIN,StateCode,";
 
-        /// <summary>
-        /// Given the state census CSV file when analyze number of record matches.
-        /// </summary>
-        /// Test Case 1.1
+        private string jsonPath = @"C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\ReadData.json"
+
+
+
         [Test]
         public void GivenTheStatesCensusCSVFile_CheckToEnsureTheNumberOfRecordMatches()
         {
@@ -198,6 +199,21 @@ namespace Testing
             string actual = read();
             string expected = "IncorrectHeaderException";
             Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void CheckingStartState_InStateCensus_WhenAnalyse_ReturnCorrectMatch()
+        {
+            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
+            string actual = stateCensusAnalyser.ReturnState(jsonPath, "State", 1);
+            Assert.AreEqual("Andhra Pradesh", actual);
+        }
+        [Test]
+        public void CheckingEndState_InStateCensus_WhenAnalyse_ReturnCorrectMatch()
+        {
+            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
+            string actual = stateCensusAnalyser.ReturnState(jsonPath, "State", 0);
+            Assert.AreEqual("West Bengal", actual);
         }
     }
 }

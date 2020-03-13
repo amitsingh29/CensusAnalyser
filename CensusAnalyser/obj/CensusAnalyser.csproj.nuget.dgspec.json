@@ -37,6 +37,16 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "ChoETL": {
+              "target": "Package",
+              "version": "[1.1.0.5, )"
+            },
+            "ChoETL.JSON": {
+              "target": "Package",
+              "version": "[1.1.0.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
