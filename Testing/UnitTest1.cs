@@ -56,9 +56,10 @@ namespace Testing
         /// <summary>
         /// Statecode file header
         /// </summary>
-        private string header1 = "SrNo,State,Name,TIN,StateCode,";
+        private string header1 = "SrNo,StateName,TIN,StateCode";
 
-        private string jsonPath = @"C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\ReadData.json"
+        private string jsonPath = @"C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\ReadData.json";
+        private string jsonPath1 = @"C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\ReadStateCode1.json";
 
 
 
@@ -205,15 +206,32 @@ namespace Testing
         public void CheckingStartState_InStateCensus_WhenAnalyse_ReturnCorrectMatch()
         {
             StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
-            string actual = stateCensusAnalyser.ReturnState(jsonPath, "State", 1);
+            string actual = stateCensusAnalyser.ReturnState(jsonPath, 1,"State");
             Assert.AreEqual("Andhra Pradesh", actual);
         }
+
         [Test]
         public void CheckingEndState_InStateCensus_WhenAnalyse_ReturnCorrectMatch()
         {
             StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
-            string actual = stateCensusAnalyser.ReturnState(jsonPath, "State", 0);
+            string actual = stateCensusAnalyser.ReturnState(jsonPath, 0, "State");
             Assert.AreEqual("West Bengal", actual);
+        }
+
+        [Test]
+        public void CheckingStartState_InStateCensusAsPerStateCode_WhenAnalyse_ReturnCorrectMatch()
+        {
+            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
+            string actual = stateCensusAnalyser.ReturnState(jsonPath1, 1, "StateCode");
+            Assert.AreEqual("AN", actual);
+        }
+
+        [Test]
+        public void CheckingEndState_InStateCensus_WhenAnalyseAsPerStateCode_ReturnCorrectMatch()
+        {
+            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
+            string actual = stateCensusAnalyser.ReturnState(jsonPath1, 0, "StateCode");
+            Assert.AreEqual("WB", actual);
         }
     }
 }

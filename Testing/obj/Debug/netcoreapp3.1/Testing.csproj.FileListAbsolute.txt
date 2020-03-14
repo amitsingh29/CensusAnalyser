@@ -106,3 +106,4 @@ C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\Testing\bin\Debu
 C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\Testing\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard2.0\System.Data.SqlClient.dll
 C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\Testing\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Data.SqlClient.dll
 C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\Testing\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\Testing\bin\Debug\netcoreapp3.1\ChoETL.JSON.Core.dll

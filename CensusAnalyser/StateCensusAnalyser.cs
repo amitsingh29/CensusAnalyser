@@ -52,7 +52,7 @@ namespace CensusAnalyser
             return lines.Length.ToString();
         }
 
-        public void SortData()
+        public void SortState()
         {
             string[] lines = System.IO.File.ReadAllLines(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
             var data = lines.Skip(1);
@@ -68,7 +68,6 @@ namespace CensusAnalyser
 
         public void JsonConversion()
         {
-
             string re = File.ReadAllText(@"C:\Users\ye10397\Desktop\Amit\SortedData.csv");
             StringBuilder sb = new StringBuilder();
 
@@ -85,16 +84,33 @@ namespace CensusAnalyser
             }
         }
 
-        public string ReturnState(string path,string stateName, int key)
+        public void JsonConversion1()
+        {
+            string re = File.ReadAllText(@"C:\Users\ye10397\Desktop\Amit\StateCode.csv");
+            StringBuilder sb = new StringBuilder();
+
+            using (var p = ChoCSVReader.LoadText(re).WithFirstLineHeader())
+            {
+                using (var w = new ChoJSONWriter(sb))
+                    w.Write(p);
+            }
+            File.WriteAllText(@"C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\ReadStateCode1.json", sb.ToString());
+            string[] arr = File.ReadAllLines(@"C:\Users\ye10397\Desktop\Amit\StateCode.csv");
+            foreach (string output in arr)
+            {
+                Console.WriteLine(output);
+            }
+        }
+
+        public string ReturnState(string path,int stateName, string key)
         {
             string record = File.ReadAllText(path);
             var data = JArray.Parse(record);
-            if (key == 0)
+            if (stateName == 0)
                 return data[data.Count - 1][key].ToString();
-            if (key == 1)
+            if (stateName == 1)
                 return data[0][key].ToString();
             return null;
-
         }
     } 
 }

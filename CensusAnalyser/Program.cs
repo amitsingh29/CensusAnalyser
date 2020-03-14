@@ -10,8 +10,8 @@ namespace CensusAnalyser
             string record = cSV.GetData();
          */
             // Console.WriteLine("The number of lines are: " + record);
-            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
-             stateCensusAnalyser.SortData();
+            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser(@"C:\Users\ye10397\Desktop\Amit\StateCode.csv");
+            stateCensusAnalyser.JsonConversion1();
             
         }
     }
