@@ -25,7 +25,7 @@ namespace CensusAnalyser
         /// <summary>
         /// The header
         /// </summary>
-        private static string header = "";
+        private static string header = string.Empty;
 
         /// <summary>
         /// The delimiter
@@ -50,7 +50,7 @@ namespace CensusAnalyser
         /// <param name="_path">_path</param>
         /// <param name="_delimiter">_path</param>
         /// <param name="_header">_path</param>
-        public CSVBuilder(string _path, char _delimiter=',', string _header="")
+        public CSVBuilder(string _path, char _delimiter = ',', string _header = "")
         {
             path = _path;
             delimiter = _delimiter;
@@ -58,7 +58,7 @@ namespace CensusAnalyser
         }
 
         /// <summary>
-        /// Gets filepath
+        /// Gets FilePath
         /// </summary>
         public string FilePath
         {
@@ -73,6 +73,7 @@ namespace CensusAnalyser
                 {
                     throw new CustomException(CustomException.Exception_Type.FileNotFoundException, "file not found");
                 }
+
                 record = File.ReadAllLines(path); 
                 return path;
             }
@@ -98,7 +99,6 @@ namespace CensusAnalyser
             {
                 try
                 {
-
                     if (record[0] != header)
                     {
                         throw new CustomException(CustomException.Exception_Type.IncorrectHeaderException, "IncorrectHeaderException");
@@ -106,9 +106,9 @@ namespace CensusAnalyser
                 }
                 catch (Exception)
                 {
-
                     throw;
                 }
+
                 return header;
             }
         }
@@ -129,6 +129,7 @@ namespace CensusAnalyser
                             throw new CustomException(CustomException.Exception_Type.IncorrectDelimiterException, "IncorrectDelimiterException");
                         }
                     }
+
                     return delimiter;
                 }
                 catch (Exception)

@@ -17,25 +17,42 @@ namespace CensusAnalyser
     /// </summary>
     public class CSVStates : ICSVBuilder
     {
-        public int count = 0;
-        public CSVBuilder cSVBuilder = new CSVBuilder();
+        /// <summary>
+        /// Counts the number of lines
+        /// </summary>
+        private int count = 0;
+
+        /// <summary>
+        /// CSVBuilder object
+        /// </summary>
+        private CSVBuilder cSVBuilder = new CSVBuilder();
+
+       /// <summary>
+       /// GetData delegate
+       /// </summary>
+       /// <returns>GetData reference</returns>
         public delegate string ReadData1();
       
+        /// <summary>
+        /// The number of lines
+        /// </summary>
+        /// <returns>Counts the number of lines</returns>
         public string GetData()
         {
             try
             {
-                string filePath = cSVBuilder.FilePath;
-                string header = cSVBuilder.Header;
-                char delimiter = (char)cSVBuilder.Delimiter;
-                string[] records = cSVBuilder.Record;
+                string filePath = this.cSVBuilder.FilePath;
+                string header = this.cSVBuilder.Header;
+                char delimiter = (char)this.cSVBuilder.Delimiter;
+                string[] records = this.cSVBuilder.Record;
                  List<string> list = new List<string>();
                  foreach (var l in records)
                  {
                      list.Add(l);
-                     count++;
+                     this.count++;
                  }
-                 return count.ToString();
+
+                 return this.count.ToString();
             }
             catch (Exception exception)
             {

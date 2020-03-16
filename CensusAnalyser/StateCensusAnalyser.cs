@@ -52,6 +52,18 @@ namespace CensusAnalyser
             return (lines.Length-1).ToString();
         }
 
+        public void SortPopulation()
+        {
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
+            var data = lines.Skip(1);
+
+            IEnumerable<string> query =
+                                        from line in data
+                                        let x = line.Split(',')
+                                        orderby x[1]
+                                        select line;
+            File.WriteAllLines(@"C:\Users\ye10397\Desktop\Amit\SortPopulation.csv", lines.Take(1).Concat(query));
+        }
         public void SortState()
         {
             string[] lines = System.IO.File.ReadAllLines(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
