@@ -17,35 +17,53 @@ namespace CensusAnalyser
     /// </summary>
     public class CSVStateCensus : ICSVBuilder
     {
-        public int count = 0;
-        public CSVBuilder cSVBuilder = new CSVBuilder();
-        public delegate string ReadData();
+        /// <summary>
+        /// Count number of lines
+        /// </summary>
+        private int count = 0;
+
+        /// <summary>
+        /// CSVBuilder object
+        /// </summary>
+        private CSVBuilder cSVBuilder = new CSVBuilder();
+
+        /// <summary>
+        ///  GetData delegate
+        /// </summary>
+        /// <returns>GetData reference</returns>
+        private delegate string ReadData();
+
+        /// <summary>
+        /// The number of lines
+        /// </summary>
+        /// <returns>Counts the number of lines</returns>
         public string GetData()
         {
             try
             {
-                string filePath = cSVBuilder.FilePath;
-                string header = cSVBuilder.Header;
-                char delimiter = (char)cSVBuilder.Delimiter;
-                string[] records = cSVBuilder.Record;
+                string filePath = this.cSVBuilder.FilePath;
+                string header = this.cSVBuilder.Header;
+                char delimiter = (char)this.cSVBuilder.Delimiter;
+                string[] records = this.cSVBuilder.Record;
                 int k = 0;
                 Dictionary<int, Dictionary<string, string>> keyValuePairs = new Dictionary<int, Dictionary<string, string>>();
                 string[] record = records[0].Split(',');
                 Dictionary<string, string> pairs;
-                for (int i=1;i<records.Length;i++)
+                for (int i = 1; i < records.Length; i++)
                 {
-                    count++;
+                    this.count++;
                     string[] value = records[i].Split(',');
                     pairs = new Dictionary<string, string>();
-                    for (int j=0;j<value.Length;j++)
+                    for (int j = 0; j < value.Length; j++)
                     {
-                        pairs.Add(record[j],value[j]);
+                        pairs.Add(record[j], value[j]);
                     }
-                    keyValuePairs.Add(k,pairs);
+
+                    keyValuePairs.Add(k, pairs);
                     k++;
                 }
 
-                return count.ToString();
+                return this.count.ToString();
             }
             catch (Exception exception)
             { 
