@@ -49,7 +49,7 @@ namespace CensusAnalyser
         public string ReadFileData()
         {
             string[] lines = File.ReadAllLines(this.filePath);
-            return lines.Length.ToString();
+            return (lines.Length-1).ToString();
         }
 
         public void SortState()
@@ -112,8 +112,6 @@ namespace CensusAnalyser
                 return data[0][key].ToString();
             return null;
         }
-
-
     } 
 }
 

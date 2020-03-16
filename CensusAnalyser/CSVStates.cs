@@ -29,17 +29,16 @@ namespace CensusAnalyser
                 string header = cSVBuilder.Header;
                 char delimiter = (char)cSVBuilder.Delimiter;
                 string[] records = cSVBuilder.Record;
-                List<string> list = new List<string>();
-                foreach(var l in records)
-                {
-                    list.Add(l);
-                    count++;
-                }
-                return count.ToString();
+                 List<string> list = new List<string>();
+                 foreach (var l in records)
+                 {
+                     list.Add(l);
+                     count++;
+                 }
+                 return count.ToString();
             }
             catch (Exception exception)
             {
-
                 return exception.Message;
             }
         }

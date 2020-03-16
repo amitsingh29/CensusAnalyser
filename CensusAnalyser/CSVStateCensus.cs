@@ -28,7 +28,30 @@ namespace CensusAnalyser
                 string header = cSVBuilder.Header;
                 char delimiter = (char)cSVBuilder.Delimiter;
                 string[] records = cSVBuilder.Record;
-                return records.Length.ToString();
+                /* string[] record = File.ReadAllLines(filePath);
+                 foreach (var r in record)
+                 {
+                     Console.WriteLine(r);
+                 }*/
+
+                int k = 0;
+                Dictionary<int, Dictionary<string, string>> keyValuePairs = new Dictionary<int, Dictionary<string, string>>();
+                string[] record = records[0].Split(',');
+                Dictionary<string, string> pairs;
+                for (int i=1;i<records.Length;i++)
+                {
+                    count++;
+                    string[] value = records[i].Split(',');
+                    pairs = new Dictionary<string, string>();
+                    for (int j=0;j<value.Length;j++)
+                    {
+                        pairs.Add(record[j],value[j]);
+                    }
+                    keyValuePairs.Add(k,pairs);
+                    k++;
+                }
+
+                return count.ToString();
             }
             catch (Exception exception)
             { 
