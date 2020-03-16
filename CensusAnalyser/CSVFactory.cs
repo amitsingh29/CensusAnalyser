@@ -6,6 +6,11 @@ namespace CensusAnalyser
 {
     public class CSVFactory 
     {
+        /// <summary>
+        /// Interface ICSVBuilder
+        /// </summary>
+        /// <param name="className"></param>
+        /// <returns>className</returns>
         public static ICSVBuilder Factory(string className)
         {
             switch(className)
