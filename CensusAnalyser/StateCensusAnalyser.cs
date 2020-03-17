@@ -52,6 +52,9 @@ namespace CensusAnalyser
             return (lines.Length-1).ToString();
         }
 
+        /// <summary>
+        /// Method for sorting on the population basis
+        /// </summary>
         public void SortPopulation()
         {
             string[] lines = System.IO.File.ReadAllLines(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
@@ -64,6 +67,10 @@ namespace CensusAnalyser
                                         select line;
             File.WriteAllLines(@"C:\Users\ye10397\Desktop\Amit\SortPopulation.csv", lines.Take(1).Concat(query));
         }
+
+        /// <summary>
+        /// Method for sorting on the state basis
+        /// </summary>
         public void SortState()
         {
             string[] lines = System.IO.File.ReadAllLines(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
@@ -78,6 +85,9 @@ namespace CensusAnalyser
             File.WriteAllLines(@"C:\Users\ye10397\Desktop\Amit\SortedData.csv", lines.Take(1).Concat(query));
         }
 
+        /// <summary>
+        /// Converting data in SortedData csv file to json format
+        /// </summary>
         public void JsonConversion()
         {
             string re = File.ReadAllText(@"C:\Users\ye10397\Desktop\Amit\SortedData.csv");
@@ -96,6 +106,9 @@ namespace CensusAnalyser
             }
         }
 
+        /// <summary>
+        /// Converting data in StateCode csv file to json format
+        /// </summary>
         public void JsonConversion1()
         {
             string re = File.ReadAllText(@"C:\Users\ye10397\Desktop\Amit\StateCode.csv");
@@ -114,6 +127,13 @@ namespace CensusAnalyser
             }
         }
 
+        /// <summary>
+        /// Returns the first stateName or last stateName
+        /// </summary>
+        /// <param name="path">The path</param>
+        /// <param name="stateName">The stateName</param>
+        /// <param name="key">The key</param>
+        /// <returns></returns>
         public string ReturnState(string path,int stateName, string key)
         {
             string record = File.ReadAllText(path);
