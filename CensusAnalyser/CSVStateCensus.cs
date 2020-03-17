@@ -31,7 +31,7 @@ namespace CensusAnalyser
         ///  GetData delegate
         /// </summary>
         /// <returns>GetData reference</returns>
-        private delegate string ReadData();
+        public delegate string ReadData();
 
         /// <summary>
         /// The number of lines

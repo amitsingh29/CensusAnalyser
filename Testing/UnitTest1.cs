@@ -29,12 +29,12 @@ namespace Testing
         private string wrongPath = @"C:\Users\ye10397\Desktop\Amit\StateCensusDat.csv";
 
         /// <summary>
-        /// StateCensusData file wrongtype
+        /// StateCensusData file wrongType
         /// </summary>
         private string wrongType = @"C:\Users\ye10397\Desktop\Amit\StateCensusData.jpg";
 
         /// <summary>
-        /// Statecode file path
+        /// Statecode filePath
         /// </summary>
         private string filePath = @"C:\Users\ye10397\Desktop\Amit\StateCode.csv";
 
@@ -58,11 +58,20 @@ namespace Testing
         /// </summary>
         private string header1 = "SrNo,StateName,TIN,StateCode";
 
+        /// <summary>
+        /// ReadData json
+        /// </summary>
         private string jsonPath = @"C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\ReadData.json";
+
+        /// <summary>
+        /// ReadStateCode1 json
+        /// </summary>
         private string jsonPath1 = @"C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\ReadStateCode1.json";
 
-
-
+        /// <summary>
+        /// Given the state census CSV file when analyze number of record matches.
+        /// </summary>
+        //// Test Case 1.1
         [Test]
         public void GivenTheStatesCensusCSVFile_CheckToEnsureTheNumberOfRecordMatches()
         {
@@ -75,6 +84,10 @@ namespace Testing
             Assert.AreEqual(value, value1);
         }
 
+        /// <summary>
+        /// Given the state census CSV file incorrect when analyze returns custom exception.
+        /// </summary>
+        //// Test Case 1.2
         [Test]
         public void GivenInCorrectFilePath_InCsvStateCensus_WhenAnalyse_ReturnFileNotFoundException()
         {
@@ -89,11 +102,12 @@ namespace Testing
         /// <summary>
         /// Givens the in correct file extension in CSV state census when analyse return incorrect file extension exception.
         /// </summary>
+         //// Test Case 1.3
         [Test]
         public void GivenInCorrectFileExtension_InCsvStateCensus_WhenAnalyse_ReturnIncorrectFileExtensionException()
         {
             CSVStateCensus obj = (CSVStateCensus)CSVFactory.Factory("CSVStateCensus");
-            CSVBuilder cSVBuilder = new CSVBuilder(wrongType);
+            CSVBuilder cSVBuilder = new CSVBuilder(this.wrongType);
             ReadData read = new ReadData(obj.GetData);
             string actual = read();
             string expected = "IncorrectTypeException";
@@ -103,6 +117,7 @@ namespace Testing
         /// <summary>
         /// Givens the wrong delimiter in file when analyse return incorrect delimiter exception.
         /// </summary>
+        /// Test Case 1.4
         [Test]
         public void GivenWrongDelimiterInFile_WhenAnalyse_ReturnIncorrectDelimiterException()
         {
@@ -118,6 +133,7 @@ namespace Testing
         /// <summary>
         /// Chekings the header of file when analyse return correct header.
         /// </summary>
+        /// Test Case 1.5
         [Test]
         public void ChekingHeaderOfFile_WhenAnalyse_ReturnCorrectHeader()
         {
@@ -132,12 +148,13 @@ namespace Testing
         /// <summary>
         /// Comparings the state census data with CSV states when analyse return correct count.
         /// </summary>
+        /// Test Case 2.1
         [Test]
         public void Comparing_StateCensusData_With_CSVStates_WhenAnalyse_ReturnCorrectCount()
         {
-            StateCensusAnalyser s = new StateCensusAnalyser(filePath);
+            StateCensusAnalyser s = new StateCensusAnalyser(this.filePath);
             CSVStates obj = (CSVStates)CSVFactory.Factory("CSVStates");
-            CSVBuilder cSVBuilder = new CSVBuilder(filePath, ',', header1);
+            CSVBuilder cSVBuilder = new CSVBuilder(this.filePath, ',', this.header1);
             ReadData1 read = new ReadData1(obj.GetData);
             string expected = s.ReadFileData().ToString();
             string actual = read();
@@ -147,12 +164,13 @@ namespace Testing
         /// <summary>
         /// Givens the in correct file path in CSV states when analyse return file not found exception.
         /// </summary>
+        /// Test Case 2.2
         [Test]
         public void GivenInCorrectFilePath_InCsvStates_WhenAnalyse_ReturnFileNotFoundException()
         {
             CSVStates obj = (CSVStates)CSVFactory.Factory("CSVStates");
             ReadData1 read = new ReadData1(obj.GetData);
-            CSVBuilder cSVBuilder = new CSVBuilder(wrongPath1);
+            CSVBuilder cSVBuilder = new CSVBuilder(this.wrongPath1);
             string expected = "file not found";
             string actual = read();
             Assert.AreEqual(expected, actual);
@@ -161,12 +179,13 @@ namespace Testing
         /// <summary>
         /// Givens the in correct file extension in CSV states when analyse return incorrect file extension exception.
         /// </summary>
+        /// Test Case 2.3
         [Test]
         public void GivenInCorrectFileExtension_InCsvStates_WhenAnalyse_ReturnIncorrectFileExtensionException()
         {
             CSVStates obj = (CSVStates)CSVFactory.Factory("CSVStates");
             ReadData1 read = new ReadData1(obj.GetData);
-            CSVBuilder cSVBuilder = new CSVBuilder(wrongType1);
+            CSVBuilder cSVBuilder = new CSVBuilder(this.wrongType1);
             string actual = read();
             string expected = "IncorrectTypeException";
             Assert.AreEqual(expected, actual);
@@ -175,12 +194,13 @@ namespace Testing
         /// <summary>
         /// Given the wrong delimiter in file in csv states when analyse return incorrect delimiter exception.
         /// </summary>
+        /// Test Case 2.4
         [Test]
         public void GivenWrongDelimiterInFile_inCSVStates_WhenAnalyse_ReturnIncorrectDelimiterException()
         {
             char delimiter = '.';
             CSVStates obj = (CSVStates)CSVFactory.Factory("CSVStates");
-            CSVBuilder cSVBuilder = new CSVBuilder(filePath, delimiter, header1);
+            CSVBuilder cSVBuilder = new CSVBuilder(this.filePath, delimiter, this.header1);
             ReadData1 read = new ReadData1(obj.GetData);
             string actual = read();
             string expected = "IncorrectDelimiterException";
@@ -190,18 +210,22 @@ namespace Testing
         /// <summary>
         /// Chekings the header of file in CSV states when analyse return correct header.
         /// </summary>
+        /// Test Case 2.5
         [Test]
         public void ChekingHeaderOfFile_InCsvStates_WhenAnalyse_ReturnCorrectHeader()
         {
             string header = "SrNo,State,Name,TIN,State";
             CSVStates obj = (CSVStates)CSVFactory.Factory("CSVStates");
-            CSVBuilder cSVBuilder = new CSVBuilder(filePath, ',', header);
+            CSVBuilder cSVBuilder = new CSVBuilder(this.filePath, ',', this.header);
             ReadData1 read = new ReadData1(obj.GetData);
             string actual = read();
             string expected = "IncorrectHeaderException";
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// Checkings the start state in state census when analyse return correct match.
+        /// </summary>
         [Test]
         public void CheckingStartState_InStateCensus_WhenAnalyse_ReturnCorrectMatch()
         {
@@ -210,22 +234,31 @@ namespace Testing
             Assert.AreEqual("Andhra Pradesh", actual);
         }
 
+        /// <summary>
+        /// Checkings the end state in state census when analyse return correct match.
+        /// </summary>
         [Test]
         public void CheckingEndState_InStateCensus_WhenAnalyse_ReturnCorrectMatch()
         {
             StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
-            string actual = stateCensusAnalyser.ReturnState(jsonPath, 0, "State");
+            string actual = stateCensusAnalyser.ReturnState(this.jsonPath, 0, "State");
             Assert.AreEqual("West Bengal", actual);
         }
 
+        /// <summary>
+        /// Checkings the start state in state code when analyse return correct match.
+        /// </summary>
         [Test]
         public void CheckingStartState_InStateCensusAsPerStateCode_WhenAnalyse_ReturnCorrectMatch()
         {
             StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
-            string actual = stateCensusAnalyser.ReturnState(jsonPath1, 1, "StateCode");
+            string actual = stateCensusAnalyser.ReturnState(this.jsonPath1, 1, "StateCode");
             Assert.AreEqual("AN", actual);
         }
 
+        /// <summary>
+        /// Checkings the end state in state code when analyse return correct match.
+        /// </summary>
         [Test]
         public void CheckingEndState_InStateCensus_WhenAnalyseAsPerStateCode_ReturnCorrectMatch()
         {
