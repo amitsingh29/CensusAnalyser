@@ -57,15 +57,15 @@ namespace CensusAnalyser
         /// </summary>
         public void SortPopulation()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\ye10397\Desktop\Amit\SortedData.csv");
+            string[] lines = File.ReadAllLines(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
             var data = lines.Skip(1);
 
             IEnumerable<string> query =
                                         from line in data
                                         let x = line.Split(',')
-                                        orderby x[1]
+                                        orderby x[1].ToInt32()
                                         select line;
-            File.WriteAllLines(@"C:\Users\ye10397\Desktop\Amit\SortPopulation.csv", lines.Take(1).Concat(query));
+            File.WriteAllLines(@"C:\Users\ye10397\Desktop\Amit\SortPopulation.csv", lines.Take(1).Concat(query.ToArray()));
         }
 
         /// <summary>
@@ -81,7 +81,6 @@ namespace CensusAnalyser
                                         let x = line.Split(',')
                                         orderby x[0]
                                         select line;
-
             File.WriteAllLines(@"C:\Users\ye10397\Desktop\Amit\SortedData.csv", lines.Take(1).Concat(query));
         }
 
@@ -206,12 +205,12 @@ namespace CensusAnalyser
             foreach (var i in lines)
             {
                 temp = i.Split(',');
-                record[k] = (int)(temp[key]).ToInt64();
+                record[k] = (int)(temp[key]).ToInt32();
                 k++;
             }
-            for (var i = 1; i < lines.Length; i++)
+            for (int i = 1; i < lines.Length; i++)
             {
-                for (var j = i + 1; j < lines.Length; j++)
+                for (int j = i + 1; j < lines.Length; j++)
                 {
                     if (record[i] > record[j])
                     {

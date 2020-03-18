@@ -52,7 +52,7 @@ namespace CensusAnalyser
                      this.count++;
                  }
 
-                 return this.count.ToString();
+                 return (this.count-1).ToString();
             }
             catch (Exception exception)
             {
