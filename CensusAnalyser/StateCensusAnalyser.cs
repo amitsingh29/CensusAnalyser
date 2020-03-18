@@ -57,7 +57,7 @@ namespace CensusAnalyser
         /// </summary>
         public void SortPopulation()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\ye10397\Desktop\Amit\SortedData.csv");
             var data = lines.Skip(1);
 
             IEnumerable<string> query =
@@ -126,6 +126,105 @@ namespace CensusAnalyser
                 Console.WriteLine(output);
             }
         }
+
+        /// <summary>
+        /// Converting sorted Population data in  SortPopulation file to SortPopulation json file
+        /// </summary>
+        public void JsonConversion2()
+        {
+            string read = File.ReadAllText(@"C:\Users\ye10397\Desktop\Amit\SortPopulation.csv");
+            StringBuilder stringBuilder = new StringBuilder();
+
+            using (var x = ChoCSVReader.LoadText(read).WithFirstLineHeader())
+            {
+                using (var y = new ChoJSONWriter(stringBuilder))
+                    y.Write(x);
+            }
+            File.WriteAllText(@"C:\Users\ye10397\Desktop\Amit\IndianStatesCensusAnalyserProblem\CensusAnalyser\SortPopulation.json", stringBuilder.ToString());
+            string[] arr = File.ReadAllLines(@"C:\Users\ye10397\Desktop\Amit\SortPopulation.csv");
+            foreach (string output in arr)
+            {
+                Console.WriteLine(output);
+            }
+        }
+
+
+        /// <summary>
+        /// Sorting string data
+        /// </summary>
+        /// <param name="path">The path</param>
+        /// <param name="key">The key</param>
+        public void SortingByString(string path, int key)
+        {
+            int count = Convert.ToInt32(ReadFileData());
+            string[] temp;
+            string[] record = new string[count + 1];
+            string[] lines = File.ReadAllLines(path);
+            int k = 0;
+            int value = 0;
+            foreach (var i in lines)
+            {
+                temp = i.Split(',');
+                record[k] = temp[key];
+                k++;
+            }
+            for (var i = 1; i < lines.Length; i++)
+            {
+                for (var j = i + 1; j < lines.Length; j++)
+                {
+                    if (record[i].CompareTo(record[j]) > 0)
+                    {
+                        string t = record[i];
+                        record[i] = record[j];
+                        record[j] = t;
+                        value++;
+                    }
+                }
+            }
+
+            foreach (var i in record)
+            {
+                Console.WriteLine(i);
+            }
+            Console.WriteLine(value);
+        }
+
+        /// <summary>
+        /// Sorting int data
+        /// </summary>
+        /// <param name="path">The path</param>
+        /// <param name="key">The key</param>
+        /// <returns></returns>
+        public int SortingByInt(string path, int key)
+        {
+            int count = Convert.ToInt32(ReadFileData());
+            string[] temp;
+            int[] record = new int[count + 1];
+            string[] lines = File.ReadAllLines(path);
+            int k = 0;
+            int value = 0;
+            foreach (var i in lines)
+            {
+                temp = i.Split(',');
+                record[k] = (int)(temp[key]).ToInt64();
+                k++;
+            }
+            for (var i = 1; i < lines.Length; i++)
+            {
+                for (var j = i + 1; j < lines.Length; j++)
+                {
+                    if (record[i] > record[j])
+                    {
+                        int t = record[i];
+                        record[i] = record[j];
+                        record[j] = t;
+                        value++;
+                    }
+                }
+            }
+            return value;
+        }
+
 
         /// <summary>
         /// Returns the first stateName or last stateName

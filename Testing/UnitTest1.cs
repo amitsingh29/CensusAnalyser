@@ -98,7 +98,11 @@ namespace Testing
             string expected = "file not found";
             Assert.AreEqual(expected, actual);
         }
-
+        public void GivenInCorrectFilePath_InCsvStateCensus_WhenAnalyse_ReturnFileNotFoundException1()
+        {
+            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser(path);
+            stateCensusAnalyser.
+        }
         /// <summary>
         /// Givens the in correct file extension in CSV state census when analyse return incorrect file extension exception.
         /// </summary>
@@ -214,7 +218,7 @@ namespace Testing
         [Test]
         public void ChekingHeaderOfFile_InCsvStates_WhenAnalyse_ReturnCorrectHeader()
         {
-            string header = "SrNo,State,Name,TIN,State";
+            //string header = "SrNo,State,Name,TIN,State";
             CSVStates obj = (CSVStates)CSVFactory.Factory("CSVStates");
             CSVBuilder cSVBuilder = new CSVBuilder(this.filePath, ',', this.header);
             ReadData1 read = new ReadData1(obj.GetData);
@@ -266,5 +270,40 @@ namespace Testing
             string actual = stateCensusAnalyser.ReturnState(jsonPath1, 0, "StateCode");
             Assert.AreEqual("WB", actual);
         }
+
+        [Test]
+        public void CheckingEndState_InStateCensus_WhenAnalyseAsPerStateCode_ReturnCorrectMatch1()
+        {
+            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser();
+            string actual = stateCensusAnalyser.ReturnState(jsonPath1, 0, "StateCode");
+            Assert.AreEqual("WB", actual);
+        }
+      /*  [Test]
+        public void Number_of_IterationsFor_Sorting_by_Population()
+        {
+            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser(@"C:\Bridgelabz\IndianState_CensusAnalyser\IndianState_CensusAnalyser\DataFile\Sorted.csv");
+            int actual = stateCensusAnalyser.SortingByInt(@"C:\Bridgelabz\IndianState_CensusAnalyser\IndianState_CensusAnalyser\DataFile\Sorted.csv", 1);
+            int expected = 186;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void Number_of_IterationsFor_Sorting_by_Area()
+        {
+            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser(@"C:\Bridgelabz\IndianState_CensusAnalyser\IndianState_CensusAnalyser\DataFile\Sorted.csv");
+            int actual = stateCensusAnalyser.SortingByInt(@"C:\Bridgelabz\IndianState_CensusAnalyser\IndianState_CensusAnalyser\DataFile\Sorted.csv", 2);
+            int expected = 204;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void Number_of_IterationsFor_Sorting_by_Density()
+        {
+            StateCensusAnalyser stateCensusAnalyser = new StateCensusAnalyser(@"C:\Bridgelabz\IndianState_CensusAnalyser\IndianState_CensusAnalyser\DataFile\Sorted.csv");
+            int actual = stateCensusAnalyser.SortingByInt(@"C:\Bridgelabz\IndianState_CensusAnalyser\IndianState_CensusAnalyser\DataFile\Sorted.csv", 3);
+            int expected = 193;
+            Assert.AreEqual(expected, actual);
+        }*/
+
     }
 }
