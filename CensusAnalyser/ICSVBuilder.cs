@@ -6,6 +6,6 @@ namespace CensusAnalyser
 {
     public interface ICSVBuilder
     {
-        string GetData();
+       public string GetData();
     }
 }

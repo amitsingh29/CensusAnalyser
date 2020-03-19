@@ -19,7 +19,7 @@ namespace CensusAnalyser
     /// <summary>
     /// StateCensusAnalyser class
     /// </summary>
-    public class StateCensusAnalyser
+    public class StateCensusAnalyser : IAdapter
     {
         /// <summary>
         /// File Path

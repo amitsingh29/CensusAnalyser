@@ -7,6 +7,7 @@
 
 namespace CensusAnalyser
 {
+    using ChoETL;
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -15,8 +16,29 @@ namespace CensusAnalyser
     /// <summary>
     /// CSVStateCensus class
     /// </summary>
-    public class CSVStateCensus : ICSVBuilder
+    public class CSVStateCensus : ICSVBuilder,IAdapter
     {
+        IAdapter iAdapter;
+        public CSVStateCensus()
+        {
+
+        }
+        public CSVStateCensus(string filePath)
+        {
+            this.filePath = filePath;
+        }
+
+        public CSVStateCensus(IAdapter iAdapter)
+        {
+            this.iAdapter = iAdapter;
+        }
+
+        public int SortingByInt(string path, int key)
+        {
+            return iAdapter.SortingByInt(path,key);
+        }
+        private string filePath;
+
         /// <summary>
         /// Count number of lines
         /// </summary>
@@ -32,6 +54,18 @@ namespace CensusAnalyser
         /// </summary>
         /// <returns>GetData reference</returns>
         public delegate string ReadData();
+
+
+
+        /// <summary>
+        /// Number Of Records
+        /// </summary>
+        /// <returns>The Number Of Lines</returns>
+        public string ReadFileData()
+        {
+            string[] lines = File.ReadAllLines(this.filePath);
+            return (lines.Length - 1).ToString();
+        }
 
         /// <summary>
         /// The number of lines
@@ -65,10 +99,48 @@ namespace CensusAnalyser
 
                 return this.count.ToString();
             }
+
             catch (Exception exception)
-            { 
+            {
                 return exception.Message;
             }
         }
+            /// <summary>
+            /// Sorting int data
+            /// </summary>
+            /// <param name="path">The path</param>
+            /// <param name="key">The key</param>
+            /// <returns></returns>
+            public int SortingByInt(string path, int key)
+            {
+                    int count = Convert.ToInt32(ReadFileData());
+                    string[] temp;
+                    int[] record = new int[count + 1];
+                    string[] lines = File.ReadAllLines(path);
+                    int k = 0;
+                    int value = 0;
+                    foreach (var i in lines)
+                    {
+                        temp = i.Split(',');
+                        record[k] = (int)temp[key].ToInt32();
+                        k++;
+                    }
+                    for (int i = 1; i < lines.Length; i++)
+                    {
+                        for (int j = i + 1; j < lines.Length; j++)
+                        {
+                            if (record[i] > record[j])
+                            {
+                                int t = record[i];
+                                record[i] = record[j];
+                                record[j] = t;
+                                value++;
+                            }
+                        }
+                    }
+
+                    return value;
+            }
     }
 }
+    
