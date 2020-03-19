@@ -18,25 +18,51 @@ namespace CensusAnalyser
     /// </summary>
     public class CSVStateCensus : ICSVBuilder,IAdapter
     {
+        /// <summary>
+        /// IAdapter type
+        /// </summary>
         IAdapter iAdapter;
+
+        /// <summary>
+        ///  Initializes a new instance of the <see cref="CSVStateCensus"/> class.
+        /// </summary>
         public CSVStateCensus()
         {
 
         }
+
+        /// <summary>
+        /// CSVStateCensus
+        /// </summary>
+        /// <param name="filePath">The filePath</param>
         public CSVStateCensus(string filePath)
         {
             this.filePath = filePath;
         }
 
+        /// <summary>
+        /// IAdapter type
+        /// </summary>
+        /// <param name="iAdapter"></param>
         public CSVStateCensus(IAdapter iAdapter)
         {
             this.iAdapter = iAdapter;
         }
 
+        /// <summary>
+        /// Sorting on the basis of int
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public int SortingByInt(string path, int key)
         {
             return iAdapter.SortingByInt(path,key);
         }
+
+        /// <summary>
+        /// The filePath
+        /// </summary>
         private string filePath;
 
         /// <summary>
@@ -54,8 +80,6 @@ namespace CensusAnalyser
         /// </summary>
         /// <returns>GetData reference</returns>
         public delegate string ReadData();
-
-
 
         /// <summary>
         /// Number Of Records
@@ -105,7 +129,7 @@ namespace CensusAnalyser
                 return exception.Message;
             }
         }
-            /// <summary>
+            /*/// <summary>
             /// Sorting int data
             /// </summary>
             /// <param name="path">The path</param>
@@ -140,7 +164,7 @@ namespace CensusAnalyser
                     }
 
                     return value;
-            }
+            }*/
     }
 }
     
