@@ -243,10 +243,12 @@ namespace CensusAnalyser
             return null;
         }
 
+        /// <summary>
+        /// Merging two csv files
+        /// </summary>
         public void Merge_CSV()
         {
             List<string> list1 = Method(@"C:\Users\ye10397\Desktop\Amit\StateCode.csv");
-            
             List<string> list2 = Method(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
             List<string[]> result1 = new List<string[]>();
             List<string[]> result2 = new List<string[]>();
@@ -322,6 +324,11 @@ namespace CensusAnalyser
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Method to count the number of lines
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static List<string> Method(string path)
         {
             string[] records = File.ReadAllLines(path);
