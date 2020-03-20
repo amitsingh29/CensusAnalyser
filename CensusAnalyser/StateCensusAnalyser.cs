@@ -242,6 +242,96 @@ namespace CensusAnalyser
                 return data[0][key].ToString();
             return null;
         }
+
+        public void Merge_CSV()
+        {
+            List<string> list1 = Method(@"C:\Users\ye10397\Desktop\Amit\StateCode.csv");
+            
+            List<string> list2 = Method(@"C:\Users\ye10397\Desktop\Amit\StateCensusData.csv");
+            List<string[]> result1 = new List<string[]>();
+            List<string[]> result2 = new List<string[]>();
+            List<string> result3 = new List<string>();
+            string[] arr1;
+            string header = "SrNo,StateName,TIN,StateCode,Population,AreaInSqKm,DensityPerSqKm";
+            for (int i = 1; i < list1.Count; i++)
+            {
+                string str1 = (string)list1[i];
+                arr1 = str1.Split(',');
+                result1.Add(arr1);
+            }
+
+            for (int i = 1; i < list2.Count; i++)
+            {
+                string str1 = (string)list2[i];
+                arr1 = str1.Split(',');
+
+                result2.Add(arr1);
+            }
+
+            result3.Add(header);
+            for (int i = 0; i < result2.Count; i++)
+            {
+                StringBuilder temp = new StringBuilder();
+                int flag = 0;
+                for (int j = 0; j < result1.Count; j++)
+                {
+                    if (result2[i].GetValue(1).Equals(result1[j].GetValue(0)))
+                    {
+                        int k = 0;
+                        while (k < result2[i].Length)
+                        {
+                            temp = temp.Append(result2[i].GetValue(k) + ",");
+                            k++;
+                        }
+                        int l = 1;
+                        while (l < result1[j].Length)
+                        {
+                            temp = temp.Append(result1[j].GetValue(l) + ",");
+                            l++;
+                        }
+                        temp = temp.Remove(temp.Length - 1, 1);
+                        result3.Add(temp.ToString());
+                        flag = 1;
+                        break;
+                    }
+                }
+
+                if (flag == 0)
+                {
+                    int k = 0;
+                    while (k < result2[i].Length)
+                    {
+                        temp = temp.Append(result2[i].GetValue(k) + ",");
+                        k++;
+                    }
+                    temp = temp.Remove(temp.Length - 1, 1);
+                    result3.Add(temp.ToString());
+                }
+            }
+
+            File.WriteAllLines(@"C:\Users\ye10409\Desktop\CensusAnalyzer\Census_Analyser\CensusAnalyser_Project\Data\Sorted.csv", result3);
+
+            foreach (var i in result3)
+            {
+                foreach (var j in i)
+                {
+                    Console.Write(j);
+                }
+                Console.WriteLine();
+            }
+            Console.ReadKey();
+        }
+
+        public static List<string> Method(string path)
+        {
+            string[] records = File.ReadAllLines(path);
+            List<string> list = new List<string>();
+            foreach (var i in records)
+            {
+                list.Add(i);
+            }
+            return list;
+        }
     } 
 }
 

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ye10397\\Desktop\\Amit\\IndianStatesCensusAnalyserProblem\\CensusAnalyser\\CensusAnalyser.csproj": {}
+    "F:\\census\\CensusAnalyser\\CensusAnalyser\\CensusAnalyser.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ye10397\\Desktop\\Amit\\IndianStatesCensusAnalyserProblem\\CensusAnalyser\\CensusAnalyser.csproj": {
+    "F:\\census\\CensusAnalyser\\CensusAnalyser\\CensusAnalyser.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ye10397\\Desktop\\Amit\\IndianStatesCensusAnalyserProblem\\CensusAnalyser\\CensusAnalyser.csproj",
+        "projectUniqueName": "F:\\census\\CensusAnalyser\\CensusAnalyser\\CensusAnalyser.csproj",
         "projectName": "CensusAnalyser",
-        "projectPath": "C:\\Users\\ye10397\\Desktop\\Amit\\IndianStatesCensusAnalyserProblem\\CensusAnalyser\\CensusAnalyser.csproj",
-        "packagesPath": "C:\\Users\\ye10397\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ye10397\\Desktop\\Amit\\IndianStatesCensusAnalyserProblem\\CensusAnalyser\\obj\\",
+        "projectPath": "F:\\census\\CensusAnalyser\\CensusAnalyser\\CensusAnalyser.csproj",
+        "packagesPath": "C:\\Users\\Amit Singh\\.nuget\\packages\\",
+        "outputPath": "F:\\census\\CensusAnalyser\\CensusAnalyser\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ye10397\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Amit Singh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -62,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

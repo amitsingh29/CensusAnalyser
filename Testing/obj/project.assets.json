@@ -4909,19 +4909,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ye10397\\.nuget\\packages\\": {}
+    "C:\\Users\\Amit Singh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ye10397\\Desktop\\Amit\\IndianStatesCensusAnalyserProblem\\Testing\\Testing.csproj",
+      "projectUniqueName": "F:\\census\\CensusAnalyser\\Testing\\Testing.csproj",
       "projectName": "Testing",
-      "projectPath": "C:\\Users\\ye10397\\Desktop\\Amit\\IndianStatesCensusAnalyserProblem\\Testing\\Testing.csproj",
-      "packagesPath": "C:\\Users\\ye10397\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ye10397\\Desktop\\Amit\\IndianStatesCensusAnalyserProblem\\Testing\\obj\\",
+      "projectPath": "F:\\census\\CensusAnalyser\\Testing\\Testing.csproj",
+      "packagesPath": "C:\\Users\\Amit Singh\\.nuget\\packages\\",
+      "outputPath": "F:\\census\\CensusAnalyser\\Testing\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ye10397\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Amit Singh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4934,8 +4934,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\ye10397\\Desktop\\Amit\\IndianStatesCensusAnalyserProblem\\CensusAnalyser\\CensusAnalyser.csproj": {
-              "projectPath": "C:\\Users\\ye10397\\Desktop\\Amit\\IndianStatesCensusAnalyserProblem\\CensusAnalyser\\CensusAnalyser.csproj"
+            "F:\\census\\CensusAnalyser\\CensusAnalyser\\CensusAnalyser.csproj": {
+              "projectPath": "F:\\census\\CensusAnalyser\\CensusAnalyser\\CensusAnalyser.csproj"
             }
           }
         }
@@ -4985,7 +4985,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
